@@ -3,6 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
+import RandomQuotes from './screens/RandomQuotes';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors } from './styles/constants';
@@ -19,6 +20,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RandomQuotes" component={RandomQuotes} />
       </Stack.Navigator>
     </NavigationContainer>
   );

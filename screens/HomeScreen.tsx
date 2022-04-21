@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../styles/constants';
-import { Link } from '@react-navigation/native';
-import { Button, Input } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -14,9 +13,12 @@ export default function HomeScreen({ navigation }) {
       {/* <Link to={{ screen: 'RandomQuotes' }}>Go to Random Quotes Generator</Link> */}
       <Button
         title="Random Quotes"
-        // buttonStyle={styles.button}
-        // containerStyle={styles.buttonContainer}
         onPress={() => navigation.navigate('RandomQuotes')}
+      />
+      <Button title="Login" onPress={() => navigation.navigate('Login')} />
+      <Button
+        title="Register"
+        onPress={() => navigation.navigate('Register')}
       />
     </View>
   );

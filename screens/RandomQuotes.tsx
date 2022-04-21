@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../styles/constants';
-import { Button, Input } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 export default function RandomQuotes({ navigation }) {
   const [quote, setQuote] = useState<string>('Get ready to be inspired');
@@ -19,28 +19,79 @@ export default function RandomQuotes({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{quote}</Text>
-      <Button
-        title="Display random quote"
-        // buttonStyle={styles.button}
-        // containerStyle={styles.buttonContainer}
-        onPress={async () => await getRandomQuote()}
-      />
+    <View style={styles.globalContainer}>
+      <View style={styles.container}>
+        <Text style={styles.text}>{quote}</Text>
+      </View>
+      <View style={styles.roundPart} />
+      <View style={styles.lowerPart}>
+        <Pressable
+          style={styles.pressable}
+          // buttonStyle={styles.button}
+          // containerStyle={styles.buttonContainer}
+          onPress={async () => await getRandomQuote()}
+        >
+          <Text style={styles.lowerPartText}>
+            Click here to get a new quote{' '}
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  globalContainer: {
     backgroundColor: colors.background,
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  container: {
+    position: 'relative',
+    top: 130,
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontFamily: 'serif',
     color: colors.textColor,
-    fontSize: 24,
+    fontSize: 26,
+    margin: 10,
+    alignSelf: 'stretch',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  roundPart: {
+    position: 'relative',
+    top: 220,
+    right: 45,
+    backgroundColor: '#718B7B',
+    borderRadius: 500,
+    width: 450,
+    height: 380,
+    alignSelf: 'stretch',
+  },
+  lowerPart: {
+    backgroundColor: '#718B7B',
+    position: 'relative',
+    // bottom: 50,
+    // height: 600,
+    alignSelf: 'stretch',
+    flex: 1,
+    alignItems: 'center',
+  },
+  lowerPartText: {
+    color: 'white',
+    fontFamily: 'serif',
+    fontSize: 40,
+    textAlign: 'center',
+  },
+  pressable: {
+    position: 'relative',
+    bottom: 70,
+    width: 250,
+    height: 300,
   },
 });

@@ -2,9 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../styles/constants';
-import { Button } from 'react-native-elements';
 
-export default function RandomQuotes({ navigation }) {
+export default function RandomQuotes() {
   const [quote, setQuote] = useState<string>('Get ready to be inspired');
 
   async function getRandomQuote() {

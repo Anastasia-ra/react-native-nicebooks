@@ -33,8 +33,18 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  globalContainer: {},
-  input: {},
+  globalContainer: {
+    backgroundColor: colors.background,
+    flex: 1,
+    // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
   pressable: {},
   text: {},
 });

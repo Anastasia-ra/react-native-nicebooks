@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
 });
 
 const createUser = gql`
-  mutation CreateUser($email: String!, $username: String!, $password: String!) {
-    createUser(email: $email, username: $username, password: $password) {
+  mutation CreateUser($username: String!, $email: String!, $password: String!) {
+    createUser(username: $username, email: $email, password: $password) {
       user {
         id
-        email
         username
-        password_hash
+        email
+        password
         error
       }
     }
@@ -45,6 +45,9 @@ export default function Register() {
     event.preventDefault();
 
     try {
+      console.log('username', username);
+      console.log('email', email);
+      console.log('password', password);
       const user = await createNewUser({
         variables: {
           username: username,
@@ -52,12 +55,13 @@ export default function Register() {
           password: password,
         },
       });
-
+      console.log('here2');
       if (user.data.createUser.error) {
         setErrorInfo(user.data.createUser.error);
         console.log(user.data.createUser.error);
         return;
       }
+      console.log('here3');
     } catch (err) {
       console.log('Error creating the user: ' + err);
     }
@@ -80,7 +84,10 @@ export default function Register() {
         style={styles.pressable}
         // buttonStyle={styles.button}
         // containerStyle={styles.buttonContainer}
-        onPress={(e) => submitRegistration(e)}
+        onPress={(e) => {
+          console.log('pressed');
+          submitRegistration(e);
+        }}
       >
         <View>
           <Text style={styles.text}>Create an account</Text>

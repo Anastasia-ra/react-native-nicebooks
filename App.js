@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 
 const cache = new InMemoryCache();
 const link = createHttpLink({
-  uri: 'https://nicebooks-backend.herokuapp.com/', // '/graphql',
+  uri: 'https://nicebooks-backend.herokuapp.com/api/graphql', // '/graphql',
   credentials: 'same-origin', // 'include',
 });
 
